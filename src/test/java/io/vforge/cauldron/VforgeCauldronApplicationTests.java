@@ -1,9 +1,9 @@
 package io.vforge.cauldron;
 
-import io.vforge.cauldron.model.OrderCoreItem;
-import io.vforge.cauldron.model.OrderItem;
-import io.vforge.cauldron.repository.OrderCoreItemRepository;
-import io.vforge.cauldron.repository.OrderItemRepository;
+import io.vforge.cauldron.model.primary.OrderCoreItem;
+import io.vforge.cauldron.model.primary.OrderItem;
+import io.vforge.cauldron.repository.primary.OrderCoreItemRepository;
+import io.vforge.cauldron.repository.primary.OrderItemRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,6 +37,10 @@ public class VforgeCauldronApplicationTests {
         List<OrderCoreItem> all = orderCoreItemRepository.findAll();
 
         log.debug("log: ", all);
+
+        List<OrderCoreItem> allOrderByIdAndAndOrderItem = orderCoreItemRepository.findAllByOrderByIdAscOrderItemAsc();
+
+        log.debug("log: ", allOrderByIdAndAndOrderItem);
 
 
 

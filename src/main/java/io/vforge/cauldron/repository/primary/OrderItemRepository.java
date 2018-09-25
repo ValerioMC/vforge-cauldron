@@ -1,6 +1,6 @@
-package io.vforge.cauldron.repository;
+package io.vforge.cauldron.repository.primary;
 
-import io.vforge.cauldron.model.OrderItem;
+import io.vforge.cauldron.model.primary.OrderItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

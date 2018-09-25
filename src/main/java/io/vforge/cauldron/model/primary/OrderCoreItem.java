@@ -1,4 +1,4 @@
-package io.vforge.cauldron.model;
+package io.vforge.cauldron.model.primary;
 
 import lombok.Getter;
 import lombok.Setter;
