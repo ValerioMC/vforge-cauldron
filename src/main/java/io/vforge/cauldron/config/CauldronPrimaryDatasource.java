@@ -26,7 +26,7 @@ import java.util.HashMap;
         transactionManagerRef = "primaryTransactionManager")
 @EnableJpaAuditing
 @Configuration
-public class CauldronDatasourcePrimary extends AbstractCaluldronDatasource {
+public class CauldronPrimaryDatasource {
 
     private final Environment env;
 
