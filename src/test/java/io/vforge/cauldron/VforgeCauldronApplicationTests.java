@@ -1,9 +1,13 @@
 package io.vforge.cauldron;
 
+import io.vforge.cauldron.model.primary.elementcollection.Collector;
+import io.vforge.cauldron.model.primary.elementcollection.CollectorAttribute;
 import io.vforge.cauldron.model.primary.OrderCoreItem;
 import io.vforge.cauldron.model.primary.OrderItem;
+import io.vforge.cauldron.repository.primary.CollectorRepository;
 import io.vforge.cauldron.repository.primary.OrderCoreItemRepository;
 import io.vforge.cauldron.repository.primary.OrderItemRepository;
+import io.vforge.cauldron.repository.primary.QueryOrderCoreItemRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.math.BigInteger;
+import java.util.Arrays;
 import java.util.List;
 
 @Slf4j
@@ -24,26 +30,63 @@ public class VforgeCauldronApplicationTests {
     @Autowired
     private OrderItemRepository orderItemRepository;
 
-    @Test
+    @Autowired
+    private CollectorRepository collectorRepository;
 
-    public void contextLoads() {
+    @Autowired
+    private QueryOrderCoreItemRepository queryOrderCoreItemRepository;
+
+    @Test
+    public void testOrder() {
         OrderItem item = new OrderItem();
         OrderCoreItem coreItem = new OrderCoreItem();
         coreItem.setOrderItem(item);
         item.setCoreItem(coreItem);
         orderCoreItemRepository.save(coreItem);
         //orderItemRepository.save(item);
-
         List<OrderCoreItem> all = orderCoreItemRepository.findAll();
-
         log.debug("log: ", all);
-
         List<OrderCoreItem> allOrderByIdAndAndOrderItem = orderCoreItemRepository.findAllByOrderByIdAscOrderItemAsc();
-
         log.debug("log: ", allOrderByIdAndAndOrderItem);
+    }
 
+    @Test
+    public void testCauldron() {
+        CollectorAttribute collectorAttribute = new CollectorAttribute("test", "test");
+        CollectorAttribute collectorAttribute1 = new CollectorAttribute("test1", "test1");
+        CollectorAttribute collectorAttribute3 = new CollectorAttribute("test2", "test2");
 
+        Collector collector = Collector.builder()
+                 .name("firstCollector")
+                 .attributes(Arrays.asList(collectorAttribute, collectorAttribute1, collectorAttribute3)).build();
 
+        Collector save = collectorRepository.save(collector);
+        log.debug("saved collector: " + save);
+
+        List<Collector> byAttributes = collectorRepository.findByAttributesKeyAndAttributesValue("test", "test");
+        log.debug("saved collector: " + byAttributes);
+
+    }
+
+    @Test
+    public void testCauldronNative() {
+
+        CollectorAttribute collectorAttribute = new CollectorAttribute("test", "test");
+        CollectorAttribute collectorAttribute1 = new CollectorAttribute("test1", "test1");
+        CollectorAttribute collectorAttribute3 = new CollectorAttribute("test2", "test2");
+
+        Collector collector = Collector.builder()
+                .name("firstCollector")
+                .attributes(Arrays.asList(collectorAttribute, collectorAttribute1, collectorAttribute3)).build();
+
+        Collector save = collectorRepository.save(collector);
+        log.debug("saved collector: " + save);
+
+        List<Collector> byAttributes = collectorRepository.findByAttributesKeyAndAttributesValue("test", "test");
+        log.debug("saved collector: " + byAttributes);
+
+        BigInteger integer = queryOrderCoreItemRepository.executeQuery(1L);
+        log.debug("found entity: " + integer);
     }
 
 }
