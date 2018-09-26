@@ -31,8 +31,8 @@ public class VforgeCauldronApplicationTests {
         OrderCoreItem coreItem = new OrderCoreItem();
         coreItem.setOrderItem(item);
         item.setCoreItem(coreItem);
+        orderCoreItemRepository.save(coreItem);
         //orderItemRepository.save(item);
-        orderItemRepository.save(item);
 
         List<OrderCoreItem> all = orderCoreItemRepository.findAll();
 

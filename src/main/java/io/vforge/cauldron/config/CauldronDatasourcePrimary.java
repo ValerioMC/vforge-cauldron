@@ -31,7 +31,7 @@ public class CauldronDatasourcePrimary extends AbstractCaluldronDatasource {
     private final Environment env;
 
     @Primary
-    @Bean(name = "primaryEntityManagerFactory")
+    @Bean
     public LocalContainerEntityManagerFactoryBean primaryEntityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em
                 = new LocalContainerEntityManagerFactoryBean();
@@ -43,6 +43,7 @@ public class CauldronDatasourcePrimary extends AbstractCaluldronDatasource {
         HashMap<String, Object> properties = new HashMap<>();
         properties.put("hibernate.hbm2ddl.auto", env.getProperty("primary.hibernate.hbm2ddl.auto"));
         properties.put("hibernate.dialect", env.getProperty("primary.hibernate.dialect"));
+        properties.put("hibernate.show_sql", env.getProperty("primary.hibernate.show_sql"));
         em.setJpaPropertyMap(properties);
 
         return em;
