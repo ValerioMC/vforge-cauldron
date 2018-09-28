@@ -8,6 +8,7 @@ import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
 
+
 @Getter
 @Setter
 @ToString(onlyExplicitlyIncluded = true)
@@ -23,6 +24,10 @@ public class OrderCoreItem {
     @Column(name = "ORDER_ITEM_ID")
     private Long id;
 
+    @Column(name = "DESCRIPTION")
+    private String description;
+
     @OneToOne(mappedBy = "coreItem", optional = false)
     private OrderItem orderItem;
+
 }

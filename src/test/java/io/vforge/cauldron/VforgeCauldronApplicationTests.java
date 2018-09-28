@@ -8,6 +8,7 @@ import io.vforge.cauldron.repository.primary.CollectorRepository;
 import io.vforge.cauldron.repository.primary.OrderCoreItemRepository;
 import io.vforge.cauldron.repository.primary.OrderItemRepository;
 import io.vforge.cauldron.repository.primary.QueryOrderCoreItemRepository;
+import io.vforge.cauldron.service.primary.OrderCoreItemService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,11 +19,15 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class VforgeCauldronApplicationTests {
+
+    @Autowired
+    private OrderCoreItemService orderCoreItemService;
 
     @Autowired
     private OrderCoreItemRepository orderCoreItemRepository;
@@ -49,6 +54,34 @@ public class VforgeCauldronApplicationTests {
         List<OrderCoreItem> allOrderByIdAndAndOrderItem = orderCoreItemRepository.findAllByOrderByIdAscOrderItemAsc();
         log.debug("log: ", allOrderByIdAndAndOrderItem);
     }
+
+
+    @Test
+    public void testSessionCacheNo2sdSave() {
+
+        orderCoreItemService.testNoSecondSave();
+    }
+
+    @Test
+    public void testSessionCache2sdSave() {
+
+        orderCoreItemService.testSecondSave();
+    }
+
+    @Test
+    public void testSessionDetached() {
+
+        orderCoreItemService.testNoSecondSaveDetach();
+    }
+
+    @Test
+    public void testSessionDetached2Session() {
+
+        OrderCoreItem orderCoreItem = orderCoreItemService.orderCoreItemStore();
+        orderCoreItemService.orderCoreItemModify(orderCoreItem);
+    }
+
+
 
     @Test
     public void testCauldron() {

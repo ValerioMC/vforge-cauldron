@@ -1,0 +1,73 @@
+{
+  "network-status": {
+    "interfaces": [
+      "eth0",
+      {
+        "status": {
+          "RX": {
+            "packets": "766292",
+            "errors": "0",
+            "dropped": "68",
+            "overruns": "0",
+            "frame": "0",
+            "bytes": "739960761"
+          },
+          "TX": {
+            "packets": "356928",
+            "errors": "0",
+            "dropped": "0",
+            "overruns": "0",
+            "carrier": "0",
+            "bytes": "54835108"
+          }
+        }
+      },
+      "lo",
+      {
+        "status": {
+          "RX": {
+            "packets": "967",
+            "errors": "0",
+            "dropped": "0",
+            "overruns": "0",
+            "frame": "0",
+            "bytes": "185357"
+          },
+          "TX": {
+            "packets": "967",
+            "errors": "0",
+            "dropped": "0",
+            "overruns": "0",
+            "carrier": "0",
+            "bytes": "185357"
+          }
+        }
+      },
+      "mlan0",
+      {
+        "status": {
+          "RX": {
+            "packets": "272573",
+            "errors": "272573",
+            "dropped": "0",
+            "overruns": "7229",
+            "frame": "0",
+            "bytes": "275867466"
+          },
+          "TX": {
+            "packets": "542",
+            "errors": "0",
+            "dropped": "0",
+            "overruns": "0",
+            "carrier": "0",
+            "bytes": "30056"
+          }
+        }
+      }
+    ]
+  },
+  "NumberOfProcess": "261",
+  "CPU Usage": "13.5473%",
+  "Disk Usage": "23%",
+  "Up Time": "2 hours, 7 minutes"
+}

@@ -15,8 +15,9 @@ public class OrderItem {
 
     @ToString.Include
     @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "author_generator")
+    @SequenceGenerator(name="author_generator", sequenceName = "author_seq")
+    @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
     @ToString.Include
