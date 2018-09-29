@@ -28,5 +28,4 @@ public class Collector {
     @CollectionTable(name = "COLLECTOR_ATTRIBUTES", joinColumns = @JoinColumn(name = "COLLECTOR_ID"))
     private List<CollectorAttribute> attributes;
 
-
 }

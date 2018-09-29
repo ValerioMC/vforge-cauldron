@@ -18,11 +18,6 @@ public class MigratedItem {
     private Long id;
 
     @Column
-    @ManyToOne
-    @JoinColumns({
-            @JoinColumn(name="ADDR_ID", referencedColumnName="ID"),
-            @JoinColumn(name="ADDR_ZIP", referencedColumnName="ZIP")
-    })
     private String description;
 
     @Builder
