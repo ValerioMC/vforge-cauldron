@@ -32,4 +32,8 @@ public class MigratedItemTest {
         log.debug("migrated items:", byId.get());
     }
 
+    @Test
+    public void genericTest() {
+    }
+
 }

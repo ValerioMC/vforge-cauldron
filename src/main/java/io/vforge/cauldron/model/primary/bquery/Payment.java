@@ -13,17 +13,6 @@ public class Payment {
     @Id
     @GeneratedValue
     private UUID id;
-    private String medio;
-    private double total;
-    private String payForm;
-    private String cardBrand;
-    private String chequeAccount;
-    private String chequeBank;
-    private String chequeNumber;
-    private String chequeDiasPlazo;
-    private long fechaCobro;
-    private int creditoIntervalos;
-    private int creditoNumeroPagos;
 
     @OneToMany(mappedBy = "payment", cascade = CascadeType.ALL)
     private List<Credits> credits;
