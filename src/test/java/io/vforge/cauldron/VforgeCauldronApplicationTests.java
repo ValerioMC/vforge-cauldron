@@ -93,7 +93,7 @@ public class VforgeCauldronApplicationTests {
                  .name("firstCollector")
                  .attributes(Arrays.asList(collectorAttribute, collectorAttribute1, collectorAttribute3)).build();
 
-        Collector save = collectorRepository.save(collector);
+        Collector save = collectorRepository.saveAndFlush(collector);
         log.debug("saved collector: " + save);
 
         List<Collector> byAttributes = collectorRepository.findByAttributesKeyAndAttributesValue("test", "test");

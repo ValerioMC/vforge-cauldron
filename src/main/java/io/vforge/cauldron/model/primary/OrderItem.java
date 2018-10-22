@@ -3,6 +3,7 @@ package io.vforge.cauldron.model.primary;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 
@@ -23,5 +24,6 @@ public class OrderItem {
     @ToString.Include
     @OneToOne(cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn(name = "ID", referencedColumnName = "ORDER_ITEM_ID")
+    @Where(clause = "description = 'strunz'")
     private OrderCoreItem coreItem;
 }

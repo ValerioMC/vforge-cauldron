@@ -17,5 +17,9 @@ public interface AnswerRepository extends JpaRepository<Answer, Long> {
     @Query("select max(answer.id) from Answer answer group by answer.userId, answer.questionId")
     List<Long> findLatestAnswersId();
 
+    @Query("select answer from Answer answer where answer.deleted = false and answer.id in (select max(inAnswer.id) from Answer inAnswer)")
+    List<Answer> findLatestAnswers();
+
+
     List<Answer> findAllByDeletedIsFalseAndIdIn(List<Long> ids);
 }

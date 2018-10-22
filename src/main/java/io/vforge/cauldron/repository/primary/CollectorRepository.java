@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface CollectorRepository extends CrudRepository<Collector, Long> {
+public interface CollectorRepository extends JpaRepository<Collector, Long> {
 
     @EntityGraph(value = "Collector.attributes", type = EntityGraph.EntityGraphType.LOAD)
     List<Collector> findByAttributesKeyAndAttributesValue(String key, String value);

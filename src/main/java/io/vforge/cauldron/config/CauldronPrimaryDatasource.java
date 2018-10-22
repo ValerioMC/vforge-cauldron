@@ -44,6 +44,7 @@ public class CauldronPrimaryDatasource {
         properties.put("hibernate.hbm2ddl.auto", env.getProperty("primary.hibernate.hbm2ddl.auto"));
         properties.put("hibernate.dialect", env.getProperty("primary.hibernate.dialect"));
         properties.put("hibernate.show_sql", env.getProperty("primary.hibernate.show_sql"));
+        properties.put("hibernate.jdbc.time_zone", env.getProperty("primary.jdbc.time_zone"));
         em.setJpaPropertyMap(properties);
 
         return em;
